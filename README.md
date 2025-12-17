@@ -6,7 +6,7 @@ My Linux workflow is the same as that used by Group 3, this time it includes the
 
 Picard is a duplicate-marking tool that identifies and remove PCR duplicates.
 
-'''
+```
 #!/bin/bash
 #SBATCH --job-name=picard_dedup
 #SBATCH --account=chipseq
@@ -46,4 +46,4 @@ picard MarkDuplicates \
 samtools index "${DEDUP}"
 
 echo "[$(date)] Finished cell ${ID}" >> 06_picard/picard_all.out
-'''
+```
