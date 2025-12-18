@@ -67,7 +67,7 @@ The variation in file size reflects differences in sequencing depth across indiv
 
 
 # Picard
-Picard is a duplicate-marking tool that identifies and remove PCR duplicates.
+Picard is a duplicate-marking tool that identifies  PCR duplicates.
 First, the script sets the cluster job parameters (job name, account, runtime, memory, and array size) and defines the input and output directories along with the cell ID file.
 Each array task reads one cell ID and checks whether the corresponding merged BAM file exists.The BAM file is then sorted using samtools, which is required by Picard.
 Finally, Picard MarkDuplicates is run to identify PCR duplicates and generate a duplication metrics file.
@@ -137,8 +137,8 @@ This is an example of a Picard metrics file showing that 717,235 reads were exam
 
 
 # Part2: R Visualization
-In R, I want to create a figure where different cell types are classified into different clusters.3
-Here, UMAP is used to visualize single-cell methylation profiles in 2D, and k-means (k = 3) groups cells into three clusters based on their positions in the UMAP space.
+In R, I want to create a figure where different cell types are classified into different clusters.
+Here, UMAP is used to visualize single-cell methylation profiles in 2D, and k-means (k = 3) groups cells into three clusters based on their positions in the UMAP space. Then, the ggplot is used to visulaize the result.
 
 # UMAP 
 ```
@@ -175,5 +175,5 @@ message("Output saved: dropbs_umap.png")
 This UMAP visualization shows three well-separated clusters of single cells based on bin-level DNA methylation features. Each point represents one cell, and colors indicate cluster assignments derived from graph-based clustering. The clear separation between clusters suggests that global methylation patterns are sufficient to distinguish distinct cell populations.
 
 # Potential mistakes for R
-* UMAP projects high-dimensional features into two dimensions for visualization. Adjusting parameters such as n_neighbors and min_dist can improve the visual separation of clusters.
+* UMAP projects high-dimensional features into two dimensions for visualization. If parameters such as n_neighbors and min_dist are not carefully tuned, clusters may appear poorly separated or misleading.
 * Both UMAP and k-means involve randomness. Failing to set a random seed can lead to slightly different embeddings and cluster assignments across runs, making results difficult to reproduce.
