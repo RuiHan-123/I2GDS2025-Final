@@ -8,7 +8,7 @@ BAM-level processing was performed using samtools (v1.3.1) and bamtools (v2.5.1)
 # Part1: Linux
 My Linux workflow is the same as that used by Group 3, this time it includes the bamtools and Picard components that were not described in detail in the group assignment.
 
-# Bamtool
+# Bamtools
 Bamtools is a toolkit for processing BAM files, primarily used for basic operations such as viewing, filtering, summarizing, and format conversion of alignment results. Because our data are paired-end sequencing results, after alignment we obtain two BAM files for each cell; therefore, bamtools is used to merge these two BAM files.
 
 First, I specify the job settings for the cluster, including the job name, account, runtime, memory, and the number of array tasks. Then, I define the input directory, output directory, and the file containing cell IDs. For each cell ID, the script selects the corresponding R1 and R2 BAM files and checks whether the cell and input files exist. Finally, bamtools is used to merge the paired-end BAM files for each cell.
