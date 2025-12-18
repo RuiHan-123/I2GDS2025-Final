@@ -59,6 +59,7 @@ echo "[$(date)] Finished merge for cell ${ID}" >> 05_bamtools/bamtools_all.out
 # bamtools output
 <img width="1849" height="953" alt="14ea2666551debbd4563dc55b1c28efe" src="https://github.com/user-attachments/assets/74240611-bf12-49fe-96c3-bd0ec56f0329" />
 
+
 This directory contains the merged BAM files produced by bamtools. For each single cell, paired-end alignment BAM files (R1 and R2) were merged into a single BAM file, resulting in one merged BAM per cell.
 The variation in file size reflects differences in sequencing depth across individual cells.
 
