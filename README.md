@@ -10,6 +10,7 @@ My Linux workflow is the same as that used by Group 3, this time it includes the
 
 # Bamtool
 Bamtools is a toolkit for processing BAM files, primarily used for basic operations such as viewing, filtering, summarizing, and format conversion of alignment results. Because our data are paired-end sequencing results, after alignment we obtain two BAM files for each cell; therefore, bamtools is used to merge these two BAM files.
+First, I specify the job settings for the cluster, including the job name, account, runtime, memory, and the number of array tasks. Then, I define the input directory, output directory, and the file containing cell IDs. For each cell ID, the script selects the corresponding R1 and R2 BAM files and checks whether the cell and input files exist. Finally, bamtools is used to merge the paired-end BAM files for each cell.
 
 ```
 #!/bin/bash
@@ -67,6 +68,9 @@ The variation in file size reflects differences in sequencing depth across indiv
 
 # Picard
 Picard is a duplicate-marking tool that identifies and remove PCR duplicates.
+First, the script sets the cluster job parameters (job name, account, runtime, memory, and array size) and defines the input and output directories along with the cell ID file.
+Each array task reads one cell ID and checks whether the corresponding merged BAM file exists.The BAM file is then sorted using samtools, which is required by Picard.
+Finally, Picard MarkDuplicates is run to identify PCR duplicates and generate a duplication metrics file.
 
 ```
 #!/bin/bash
